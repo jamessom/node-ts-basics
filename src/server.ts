@@ -1,7 +1,10 @@
 import express, { Request, Response } from 'express';
 import { v4 as uuid } from 'uuid';
+import cors from 'cors';
 const app = express();
 
+app.use(express.json());
+app.use(cors());
 interface User {
   id: string,
   name: string,
@@ -55,8 +58,6 @@ const userModule = {
     return response.status(204).send();
   }
 };
-
-app.use(express.json());
 
 const route = {
   users: '/users'
