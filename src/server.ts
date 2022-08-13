@@ -5,6 +5,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
+
 interface User {
   id: string,
   name: string,
@@ -14,7 +15,7 @@ interface User {
 const users: User[] = [];
 
 const userModule = {
-  get: (response: Response) => {
+  get: (request: Request, response: Response) => {
     return response.json(users);
   },
   post: (request: Request, response: Response) => {
